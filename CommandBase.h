@@ -3,10 +3,11 @@
 
 #include <string>
 #include "Commands/Command.h"
-
 #include "OI.h"
 #include "WPILib.h"
 #include "Subsystems/DriveTrain.h"
+#include "Subsystems/LiftingArm.h"
+#include "Subsystems/Grasper.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -22,6 +23,8 @@ public:
 	// Create a single static instance of all of your subsystems
     static DriveTrain *drivetrain;
 	static OI *oi;
+	static LiftingArm *lift;
+	static Grasper *grasp;
 };
 
 #endif

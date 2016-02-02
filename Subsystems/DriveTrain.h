@@ -17,10 +17,12 @@ private:
 	// for methods that implement subsystem capabilities
 public:
 	DriveTrain();
-	float GetMotorValue(int x);
+	double GetMotorValue(int x);
 	void InitDefaultCommand();
-	void MecanumDrive(Joystick *joyl, Joystick *joyr);
+	void MecanumDrive(Joystick *joyl, Joystick *joyr, JoystickButton*  buttonleft, JoystickButton* buttonright, JoystickButton*  buttonleftf, JoystickButton* buttonrightf, JoystickButton* buttonfl, JoystickButton* buttonfr, JoystickButton* buttonbl, JoystickButton* buttonbr, JoystickButton* buttonslidel, JoystickButton* buttonslider);
 	void TankDrive(Joystick *joyl, Joystick* joyr);
 	void Stop();
+	void TankDrivenum(float y1, float y2);
+	//double Testing();
 };
 #endif

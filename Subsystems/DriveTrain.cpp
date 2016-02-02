@@ -7,6 +7,7 @@
 	double driveblval;
 	double drivebrval;
 
+
 DriveTrain::DriveTrain() :
 		Subsystem("DriveTrain")
 {
@@ -16,7 +17,7 @@ DriveTrain::DriveTrain() :
 	drivebr = new Talon(RightBackDrive);
 	drive = new RobotDrive (drivefl, drivebl, drivefr, drivebr);
 
-	drive->SetSafetyEnabled(true);
+	drive->SetSafetyEnabled(false);
 	drive->SetExpiration(0.1);
 	drive->SetSensitivity(0.5);
 	drive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, false);
@@ -24,22 +25,102 @@ DriveTrain::DriveTrain() :
 	drive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 	drive->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 
+
 }
 
-void DriveTrain::MecanumDrive(Joystick* joyl, Joystick* joyr)
+void DriveTrain::MecanumDrive(Joystick* joyl, Joystick* joyr, JoystickButton* buttonleft, JoystickButton* buttonright, JoystickButton* buttonleftf, JoystickButton* buttonrightf, JoystickButton* buttonfl, JoystickButton* buttonfr, JoystickButton* buttonbl, JoystickButton* buttonbr, JoystickButton* buttonslidel, JoystickButton* buttonslider)
 {
+	float backwards = backwardrate;
+	float forwards = forwardrate;
+	float turns = turnRate;
+	float turnsf = turnRatef;
+	float slider = slideRate;
+	forwards = SmartDashboard::GetNumber("Forward Button Speed", forwardrate);
+	backwards = SmartDashboard::GetNumber("Backwards Button Speed", backwardrate);
+	turns = SmartDashboard::GetNumber("Turn Buttons Slow Speed", turnRate);
+	turnsf = SmartDashboard::GetNumber("Turn Buttons Fast Speed", turnRatef);
+	slider = SmartDashboard::GetNumber("Slide Button Speed", slideRate);
 
 
-				if(joyl->GetY() >=- 0.2 && joyl->GetY() <= 0.2 && joyr->GetY() <= 0.2  && joyr->GetY() >= -0.2){
-					if(joyl->GetX() >= 0.2 || joyl->GetX() <= -0.2 || joyr->GetX() <= -0.2 || joyr->GetX() >= 0.2){
-				drivefl->Set(-joyl->GetX());
+
+
+
+				if(joyl->GetY() >=- sidethresh && joyl->GetY() <= sidethresh && joyr->GetY() <= sidethresh  && joyr->GetY() >= -sidethresh){
+					if(joyl->GetX() >= sidethresh || joyl->GetX() <= -sidethresh || joyr->GetX() <= -sidethresh || joyr->GetX() >= sidethresh){
+				drivefl->Set((-1.0) *joyl->GetX());
 				driveflval = -joyl->GetX();
-				drivefr->Set(joyl->GetX());
+				drivefr->Set((-1.0) * joyl->GetX());
 				drivefrval = joyl->GetX();
 				drivebl->Set(joyl->GetX());
 				driveblval = joyl->GetX();
-				drivebr->Set(-joyl->GetX());
+				drivebr->Set( joyl->GetX());
 				drivebrval = -joyl->GetX();
+				}
+					else if (buttonleft->Get() || buttonright->Get())
+									{
+										if(buttonleft->Get())
+										{
+											drivefl->Set(turns);
+											drivebl->Set(turns);
+											drivefr->Set(turns);
+											drivebr->Set(turns);
+										}
+										else
+										{
+											drivefl->Set(-turns);
+											drivebl->Set(-turns);
+											drivefr->Set(-turns);
+											drivebr->Set(-turns);
+										}
+									}
+					else if (buttonleftf->Get() || buttonrightf->Get())
+														{
+															if(buttonleftf->Get())
+															{
+																drivefl->Set(turnsf);
+																drivebl->Set(turnsf);
+																drivefr->Set(turnsf);
+																drivebr->Set(turnsf);
+															}
+
+															else
+															{
+																drivefl->Set(-turnsf);
+																drivebl->Set(-turnsf);
+																drivefr->Set(-turnsf);
+																drivebr->Set(-turnsf);
+															}
+														}
+					else if (buttonfl->Get() || buttonfr->Get())
+																			{
+																					drivefl->Set(-forwards);
+																					drivefr->Set(forwards);
+																					drivebl->Set(-forwards);
+																					drivebr->Set(forwards);
+																			}
+					else if (buttonbl->Get() || buttonbr->Get())
+																			{
+																					drivefl->Set(-backwards);
+																					drivefr->Set(backwards);
+																					drivebl->Set(-backwards);
+																					drivebr->Set(backwards);
+																			}
+					else if (buttonslidel->Get() || buttonslider->Get())
+					{
+																	if (buttonslidel->Get())
+																			{
+																					drivefl->Set(slider);
+																					drivefr->Set(slider);
+																					drivebl->Set(-slider);
+																					drivebr->Set(-slider);
+																			}
+																	else
+																	{
+																		drivefl->Set(-slider);
+																		drivefr->Set(-slider);
+																		drivebl->Set(slider);
+																		drivebr->Set(slider);
+																	}
 				}
 					else
 					{
@@ -59,6 +140,8 @@ void DriveTrain::MecanumDrive(Joystick* joyl, Joystick* joyr)
 					drivebl->Set(- joyr->GetX());
 					drivebr->Set( joyr->GetX());
 				}*/
+
+
 				else {
 					drivefl->Set(joyl->GetY());
 					driveflval = joyl->GetY();
@@ -76,6 +159,10 @@ void DriveTrain::TankDrive(Joystick *joyl, Joystick *joyr)
 {
 	drive->TankDrive(joyl->GetY(), joyr->GetY());
 }
+void DriveTrain::TankDrivenum(float y1, float y2)
+{
+	drive->TankDrive(y1, y2);
+}
 
 
 
@@ -90,12 +177,23 @@ void DriveTrain::Stop()
 	drive->TankDrive(0.0, 0.0);
 }
 
-float DriveTrain::GetMotorValue(int x)
+double DriveTrain::GetMotorValue(int x)
 {
+	//std::cout << "Is it after here?" << std::endl;
+	double output;
+	float flval = 1.05;
+	//double frval = drivefr->Get();
+	//double blval = drivebl->Get();
+	//double brval = drivebr->Get();
+	//flval = static_cast <double> (drivefl->Get());
+	std::cout<<"GetMotorValue Value:" <<flval<<std::endl;
+	//frval = static_cast <double> (drivefr->Get());
+	//blval = static_cast <double> (drivebl->Get());
+	//brval = static_cast <double> (drivebr->Get());
 		switch (x)
 		{
 		case 1:
-			return drivefl->Get();
+		output = flval;
 			break;
 		case 2:
 			return drivefr->Get();
@@ -107,11 +205,18 @@ float DriveTrain::GetMotorValue(int x)
 			return drivebr->Get();
 			break;
 		default:
-			return 0.0;
+			//return 0.0;
+			output = 0.0;
 			break;
 		}
-
+		return output;
 }
+/*double DriveTrain::Testing()
+	{
+		double testval = 1.050;
+		return testval;
+	}*/
+
 
 
 // Put methods for controlling this subsystem

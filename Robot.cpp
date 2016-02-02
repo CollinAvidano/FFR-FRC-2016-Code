@@ -1,27 +1,42 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "Subsystems/DriveTrain.h"
+#include "Subsystems/LiftingArm.h"
 #include "CommandBase.h"
-
-
+#include <string.h>
+#include "Subsystems/Grasper.h"
+#include "RobotMap.h"
+#include "Commands/MoveForward.h"
 class Robot: public IterativeRobot
 {
 
-	SendableChooser autoChooser;
+
+
+
 
 private:
+	//SendableChooser *autoChooser;
 	DriveTrain *drivetrain;
 	OI *oi;
+	LiftingArm *lift;
+	Grasper *grasp;
+	BuiltInAccelerometer *accel;
 	Command *autonomousCommand;
 	LiveWindow *lw;
+
+
+
 
 	void RobotInit()
 	{
 		CommandBase::init();
-		SmartDashboard::PutData(drivetrain);
-		autoChooser = new SendableChooser();
-		//autoChooser.addDefault("Default program", new  DriveForward());
-		//autoChooser.addObject("Difficult Mode", new PickupAuto());
+		SmartDashboard::init();
+		accel = new BuiltInAccelerometer;
+		//SmartDashboard::PutData(drivetrain);
+		//autoChooser = new SendableChooser();
+		//autoChooser->AddDefault("Default program", new  DriveForward());
+		//autoChooser->AddObject("Difficult Mode", new PickupAuto());
+		//SmartDashboard::PutData("Autonomous modes", autoChooser);
 
 
 		lw = LiveWindow::GetInstance();
@@ -30,12 +45,13 @@ private:
 	void DisabledPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
-		Log();
+
 	}
 
 	void AutonomousInit()
 	{
-		autonomousCommand = (Command) autoChooser.GetSelected();
+		//autonomousCommand = (Command *) autoChooser->GetSelected();
+		autonomousCommand = new MoveForward;
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
 	}
@@ -48,6 +64,12 @@ private:
 
 	void TeleopInit()
 	{
+		SmartDashboard::PutNumber("Forward Button Speed", forwardrate);
+		SmartDashboard::PutNumber("Backwards Button Speed", backwardrate);
+		SmartDashboard::PutNumber("Turn Buttons Slow Speed", turnRate);
+		SmartDashboard::PutNumber("Turn Buttons Fast Speed", turnRatef);
+		SmartDashboard::PutNumber("Slide Button Speed", slideRate);
+
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
@@ -59,8 +81,10 @@ private:
 
 	void TeleopPeriodic()
 	{
+
 		Scheduler::GetInstance()->Run();
 		Log();
+		lw->Run();
 	}
 
 	void TestPeriodic()
@@ -70,15 +94,10 @@ private:
 	}
 	void Log()
 	{
-		SmartDashboard::PutNumber("Left Front Motor", drivetrain->GetMotorValue(1l));
-		SmartDashboard::PutNumber("Right Front Motor", drivetrain->GetMotorValue(2));
-		SmartDashboard::PutNumber("Left Back Motor", drivetrain->GetMotorValue(3));
-		SmartDashboard::PutNumber("Left Back Motor", drivetrain->GetMotorValue(4));
-		SmartDashboard::PutNumber("Left Joystick X Axis", oi->GetLeftjoy()->GetX());
-		SmartDashboard::PutNumber("Right Joystick X Axis", oi->GetRightjoy()->GetX());
-		SmartDashboard::PutNumber("Left Joystick Y Axis", oi->GetLeftjoy()->GetY());
-		SmartDashboard::PutNumber("Left Joystick Y Axis", oi->GetRightjoy()->GetY());
+
+
 	}
+
 };
 
 START_ROBOT_CLASS(Robot);

@@ -18,7 +18,7 @@ void DrivewithJoystick::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void DrivewithJoystick::Execute()
 {
-	 drivetrain->MecanumDrive(oi->GetLeftjoy(),oi->GetRightjoy());
+	 drivetrain->MecanumDrive(oi->GetLeftjoy(),oi->GetRightjoy(), oi->GetButtonLeft(), oi->GetButtonRight(), oi->GetButtonLeftf(), oi->GetButtonRightf(), oi->GetButtonFl(), oi->GetButtonFr(), oi->GetButtonBl(), oi->GetButtonBr(), oi->GetButtonSl(), oi->GetButtonSr());
 }
 
 // Make this return true when this Command no longer needs to run execute()
