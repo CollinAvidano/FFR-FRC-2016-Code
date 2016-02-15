@@ -1,6 +1,6 @@
 #include "LiftingArm.h"
 #include "../RobotMap.h"
-#include "Commands/LiftUpDown.h"
+#include "../Commands/LiftUpDown.h"
 #include <math.h>
 LiftingArm::LiftingArm() :
 		Subsystem("LiftingArm")

@@ -3,7 +3,7 @@
 
 #include "../CommandBase.h"
 #include "WPILib.h"
-#include "RobotMap.h"
+#include "../RobotMap.h"
 
 class LiftUpDown: public CommandBase
 {

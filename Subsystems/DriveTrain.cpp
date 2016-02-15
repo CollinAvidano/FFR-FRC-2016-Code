@@ -1,6 +1,6 @@
 #include "DriveTrain.h"
 #include "../RobotMap.h"
-#include "Commands/DrivewithJoystick.h"
+#include "../Commands/DrivewithJoystick.h"
 
 	double driveflval;
 	double drivefrval;
@@ -20,8 +20,8 @@ DriveTrain::DriveTrain() :
 	drive->SetSafetyEnabled(false);
 	drive->SetExpiration(0.1);
 	drive->SetSensitivity(0.5);
-	drive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, false);
-	drive->SetInvertedMotor(RobotDrive::kRearLeftMotor, false);
+	drive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
+	drive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	drive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
 	drive->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 
