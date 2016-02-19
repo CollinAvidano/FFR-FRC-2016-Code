@@ -14,6 +14,8 @@ private:
 	DriveTrain *drivetrain;
 	OI *oi;
 	LiftingArm *lift;
+	Camera *cam;
+
 	BuiltInAccelerometer *accel;
 	Command *autonomousCommand;
 	LiveWindow *lw;
@@ -24,20 +26,6 @@ private:
 
 	void RobotInit()
 	{
-		//camera update image creation
-		// create an image
-		frame = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
-		//the camera name (ex "cam0") can be found through the roborio web interface
-		imaqError = IMAQdxOpenCamera("cam0", IMAQdxCameraControlModeController, &session);
-		if(imaqError != IMAQdxErrorSuccess) {
-			DriverStation::ReportError("IMAQdxOpenCamera error: " + std::to_string((long)imaqError) + "\n");
-		}
-		imaqError = IMAQdxConfigureGrab(session);
-		if(imaqError != IMAQdxErrorSuccess) {
-			DriverStation::ReportError("IMAQdxConfigureGrab error: " + std::to_string((long)imaqError) + "\n");
-		}
-
-
 		CommandBase::init();
 		SmartDashboard::init();
 		accel = new BuiltInAccelerometer;
@@ -46,7 +34,6 @@ private:
 		//autoChooser->AddDefault("Default program", new  DriveForward());
 		//autoChooser->AddObject("Difficult Mode", new PickupAuto());
 		//SmartDashboard::PutData("Autonomous modes", autoChooser);
-
 
 		lw = LiveWindow::GetInstance();
 	}
@@ -86,6 +73,9 @@ private:
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
 
+		CameraServer::GetInstance()->SetQuality(50);
+		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
+
 	}
 
 	void TeleopPeriodic()
@@ -93,23 +83,6 @@ private:
 		Scheduler::GetInstance()->Run();
 		Log();
 		lw->Run();
-
-		// acquire images
-		IMAQdxStartAcquisition(session);
-
-		// grab an image, draw the circle, and provide it for the camera server which will
-		// in turn send it to the dashboard.
-		while(IsOperatorControl() && IsEnabled()) {
-			IMAQdxGrab(session, frame, true, NULL);
-			if(imaqError != IMAQdxErrorSuccess) {
-				DriverStation::ReportError("IMAQdxGrab error: " + std::to_string((long)imaqError) + "\n");
-			} else {
-				CameraServer::GetInstance()->SetImage(frame);
-			}
-			Wait(0.005);				// wait for a motor update time
-		}
-		// stop image acquisition
-		IMAQdxStopAcquisition(session);
 	}
 
 	void TestPeriodic()

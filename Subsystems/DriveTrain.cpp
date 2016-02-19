@@ -211,13 +211,6 @@ double DriveTrain::GetMotorValue(int x)
 		}
 		return output;
 }
-/*double DriveTrain::Testing()
-	{
-		double testval = 1.050;
-		return testval;
-	}*/
-
-
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
