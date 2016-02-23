@@ -2,8 +2,7 @@
 #define COMMAND_BASE_H
 
 #include "Subsystems/DriveTrain.h"
-#include "Subsystems/LiftingArm.h"
-#include "Subsystems/Camera.h"
+#include "Subsystems/ShootingArm.h"
 
 
 #include <string>
@@ -25,8 +24,7 @@ public:
 	// Create a single static instance of all of your subsystems
     static DriveTrain *drivetrain;
 	static OI *oi;
-	static LiftingArm *lift;
-	static Camera *cam;
+	static ShootingArm *shooter;
 };
 
 #endif

@@ -14,27 +14,33 @@
  
 // For example to map the left and right motors, you could define the
 // following variables to use with your drivetrain subsystem.
-//const int LEFTMOTOR = 1;
-//const int RIGHTMOTOR = 2;
-const int LeftFrontDrive = 0;
-const int RightFrontDrive = 1;
-const int LeftBackDrive = 2;
-const int RightBackDrive = 3;
-const int LiftJagPWM = 4;
+//const int LeftFrontDrive = 0;
+//const int RightFrontDrive = 1;
+const int LeftDrive = 2;
+const int RightDrive = 3;
+
+const int ArmJagPWM1 = 4;
+const int ArmJagPWM2 = 5;
+const int ArmJagPWM3 = 6;
+
 const int EncAChan = 0;
 const int EncBChan = 1;
 const float winchspeed = 1.0;
 const float winchinc = 0.1;
 const float winchthresh = 0.05;
- const int GraspJagPWM = 5;
- const float screwVal = 1.0;
- const float turnRate = 0.2;
+
+//drive train variables
+const float screwVal = 1.0;
+const float turnRate = 0.2;
 const float turnRatef = 0.5;
- const float sidethresh = 0.10;
+const float sidethresh = 0.10;
 const float forwardrate = 0.2;
- const float backwardrate = -0.2;
- const float slideRate = 0.3;
- const float autonomousTime = 12.5;
+const float backwardrate = -0.2;
+const float slideRate = 0.3;
+
+//autonomous variables
+const float autonomousTime = 12.5;
+
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
 //const int RANGE_FINDER_PORT = 1;

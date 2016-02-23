@@ -1,7 +1,6 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "Subsystems/DriveTrain.h"
-#include "Subsystems/LiftingArm.h"
 #include "CommandBase.h"
 #include <string.h>
 #include "RobotMap.h"
@@ -13,8 +12,6 @@ private:
 	//SendableChooser *autoChooser;
 	DriveTrain *drivetrain;
 	OI *oi;
-	LiftingArm *lift;
-	Camera *cam;
 
 	BuiltInAccelerometer *accel;
 	Command *autonomousCommand;

@@ -1,13 +1,14 @@
-#ifndef Record_H
-#define Record_H
+#ifndef Shoot_H
+#define Shoot_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
+#include "../RobotMap.h"
 
-class Record: public CommandBase
+class Shoot: public CommandBase
 {
 public:
-	Record();
+	Shoot();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

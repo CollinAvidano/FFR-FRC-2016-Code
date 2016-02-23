@@ -1,20 +1,21 @@
-#ifndef LiftingArm_H
-#define LiftingArm_H
+#ifndef ShootingArm_H
+#define ShootingArm_H
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class LiftingArm: public Subsystem
+class ShootingArm : public Subsystem
 {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	SpeedController *armWinch;
-	//Encoder *encod;
+	SpeedController *ArmMotor1;
+	SpeedController *ArmMotor2;
+	SpeedController *ArmMotor3;
+
 public:
-	LiftingArm();
+	ShootingArm();
 	void InitDefaultCommand();
-	//Encoder *GetEncoder();
 	void Up(float speed);
 	void Down(float speed);
 	void Stop();

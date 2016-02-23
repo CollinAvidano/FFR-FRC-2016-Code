@@ -5,8 +5,7 @@
 
  DriveTrain* CommandBase::drivetrain = NULL;
  OI* CommandBase::oi = NULL;
- LiftingArm* CommandBase::lift = NULL;
- Camera* CommandBase::cam = NULL;
+ ShootingArm* CommandBase::shooter = NULL;
 
 CommandBase::CommandBase(char const *name) :
 		Command(name)
@@ -26,6 +25,5 @@ void CommandBase::init()
 
 	drivetrain =  new DriveTrain();
 	oi = new OI();
-	lift  = new LiftingArm();
-	cam = new Camera();
+	shooter = new ShootingArm();
 }
