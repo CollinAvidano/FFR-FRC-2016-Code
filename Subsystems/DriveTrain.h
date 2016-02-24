@@ -1,16 +1,12 @@
-#ifndef DriveTrain_H
-#define DriveTrain_H
+#pragma once
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class DriveTrain: public Subsystem
-{
+class DriveTrain: public Subsystem {
 private:
-	SpeedController *drivefl;
-	SpeedController *drivefr;
-	SpeedController *drivebl;
-	SpeedController *drivebr;
+	SpeedController *driveleft;
+	SpeedController *driveright;
 	RobotDrive *drive;
 
 	// It's desirable that everything possible under private except
@@ -25,4 +21,3 @@ public:
 	void TankDrivenum(float y1, float y2);
 	//double Testing();
 };
-#endif

@@ -9,13 +9,16 @@
  
 // For example to map the left and right motors, you could define the
 // following variables to use with your drivetrain subsystem.
-//const int LEFTMOTOR = 1;
-//const int RIGHTMOTOR = 2;
-const int LeftFrontDrive = 0;
-const int RightFrontDrive = 1;
-const int LeftBackDrive = 2;
-const int RightBackDrive = 3;
-const int LiftJagPWM = 4;
+const int LeftDrive = 0;
+const int RightDrive = 1;
+//const int LeftBackDrive = 2;
+//const int RightBackDrive = 3;
+
+const int ShootInterior = 2;
+const int ShootExterior = 3;
+const int Loader = 4;
+
+const int LiftJagPWM = 6;
 const int EncAChan = 0;
 const int EncBChan = 1;
 const float winchspeed = 1.0;
