@@ -1,5 +1,7 @@
 #include "DrivewithJoystick.h"
 
+#include "Subsystems/DriveTrain.h"
+#include "OI.h"
 
 DrivewithJoystick::DrivewithJoystick()
 {

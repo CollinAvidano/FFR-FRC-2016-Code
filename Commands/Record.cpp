@@ -5,14 +5,12 @@
 Image *frame;
 IMAQdxError imaqError;*/
 
-Record::Record()
-{
-	Requires(cam);
+Record::Record() {
+
 }
 
 // Called just before this Command runs the first time
-void Record::Initialize()
-{
+void Record::Initialize() {
 	/*//camera update image creation
 	// create an image
 	frame = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
@@ -46,20 +44,17 @@ void Record::Execute()
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool Record::IsFinished()
-{
+bool Record::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void Record::End()
-{
+void Record::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void Record::Interrupted()
-{
+void Record::Interrupted() {
 
 }

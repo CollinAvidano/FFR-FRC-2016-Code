@@ -1,5 +1,8 @@
 #include "LiftUpDown.h"
 
+#include "Subsystems/LiftingArm.h"
+#include "OI.h"
+
 LiftUpDown::LiftUpDown()
 {
 	// Use Requires() here to declare subsystem dependencies
