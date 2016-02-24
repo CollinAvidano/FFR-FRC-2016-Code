@@ -1,11 +1,8 @@
-#ifndef EXAMPLE_COMMAND_H
-#define EXAMPLE_COMMAND_H
+#pragma once
 
 #include "../CommandBase.h"
-#include "WPILib.h"
 
-class ExampleCommand: public CommandBase
-{
+class ExampleCommand : public CommandBase {
 public:
 	ExampleCommand();
 	void Initialize();
@@ -14,5 +11,3 @@ public:
 	void End();
 	void Interrupted();
 };
-
-#endif
