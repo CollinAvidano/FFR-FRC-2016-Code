@@ -2,9 +2,9 @@
 
 #include "../CommandBase.h"
 
-class ExampleCommand : public CommandBase {
+class Shoot : public CommandBase {
 public:
-	ExampleCommand();
+	Shoot();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

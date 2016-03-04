@@ -2,11 +2,21 @@
 
 #include "Commands/Subsystem.h"
 
-class ExampleSubsystem : public Subsystem {
+class SpeedController;
+
+class ShootPlatform : public Subsystem {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+	SpeedController *front, *rear, *load;
+
 public:
-	ExampleSubsystem();
+	ShootPlatform();
+	~ShootPlatform();
+
 	void InitDefaultCommand();
+
+	/// @brief Set the power of the loading motors.
+	void LoadPower(float power);
+
+	/// @brief Set the power of the firing motors.
+	void FirePower(float power_front, float power_rear);
 };

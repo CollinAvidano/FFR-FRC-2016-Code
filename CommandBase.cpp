@@ -4,12 +4,14 @@
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/LiftingArm.h"
 #include "OI.h"
+#include "Subsystems/ShootPlatform.h"
 
 // Initialize a single static instance of all of your subsystems to NULL
 
  DriveTrain* CommandBase::drivetrain = nullptr;
  OI* CommandBase::oi = nullptr;
  LiftingArm* CommandBase::lift = nullptr;
+ ShootPlatform* CommandBase::shootplatform = nullptr;
 
 CommandBase::CommandBase(char const *name) :
 Command(name) {
@@ -28,4 +30,5 @@ void CommandBase::init() {
 	drivetrain =  new DriveTrain();
 	oi = new OI();
 	lift  = new LiftingArm();
+	shootplatform = new ShootPlatform();
 }

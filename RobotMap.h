@@ -14,8 +14,8 @@ const int RightDrive = 1;
 //const int LeftBackDrive = 2;
 //const int RightBackDrive = 3;
 
-const int ShootInterior = 2;
-const int ShootExterior = 3;
+const int ShootRear = 2; // Previously ShootInterior
+const int ShootFront = 3; // Previously ShootExterior
 const int Loader = 4;
 
 const int LiftJagPWM = 6;
