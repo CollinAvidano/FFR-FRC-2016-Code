@@ -29,7 +29,7 @@ void DriveTrain::TankDrivenum(float y1, float y2) {
 }
 
 void DriveTrain::InitDefaultCommand() {
-	SetDefaultCommand(new DrivewithJoystick);
+	SetDefaultCommand(new DrivewithJoystick());
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
 }

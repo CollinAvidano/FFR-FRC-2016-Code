@@ -6,6 +6,7 @@ class DriveTrain;
 class OI;
 class LiftingArm;
 class Camera;
+class ShootPlatform;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -22,4 +23,5 @@ public:
     static DriveTrain *drivetrain;
 	static OI *oi;
 	static LiftingArm *lift;
+	static ShootPlatform *shootplatform;
 };

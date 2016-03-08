@@ -10,8 +10,12 @@ OI::OI()
 	buttonright = new JoystickButton(rightjoy, 1);
 	buttonleftf = new JoystickButton(leftjoy, 4);
 	buttonrightf = new JoystickButton(rightjoy, 5);
-	buttonopen = new JoystickButton(gamecon, 7);
-	buttonclose = new JoystickButton(gamecon, 8);
+
+	button1 = new JoystickButton(gamecon, 7);
+	button2 = new JoystickButton(gamecon, 8);
+	button3 = new JoystickButton(gamecon, 7);
+	button4 = new JoystickButton(gamecon, 8);
+
 	buttonforwardl = new JoystickButton(leftjoy, 3);
 	buttonbackwardl = new JoystickButton(leftjoy, 2);
 	buttonforwardr = new JoystickButton(rightjoy, 3);
@@ -21,12 +25,12 @@ OI::OI()
 
 }
 
-	Joystick* OI::GetLeftjoy() {
-		return leftjoy;
-	}
-	Joystick* OI::GetRightjoy() {
-		return rightjoy;
-	}
+Joystick* OI::GetLeftjoy() {
+	return leftjoy;
+}
+Joystick* OI::GetRightjoy() {
+	return rightjoy;
+}
 JoystickButton* OI::GetButtonLeft()
 {
 	return buttonleft;
@@ -47,14 +51,24 @@ Joystick* OI::GetGameCon()
 {
 	return gamecon;
 }
-JoystickButton* OI::GetButtonOpen()
+
+JoystickButton* OI::GetButton1()
 {
-	return buttonopen;
+	return button1;
 }
-JoystickButton* OI::GetButtonClose()
+JoystickButton* OI::GetButton2()
 {
-	return buttonclose;
+	return button2;
 }
+JoystickButton* OI::GetButton3()
+{
+	return button3;
+}
+JoystickButton* OI::GetButton4()
+{
+	return button4;
+}
+
 JoystickButton* OI::GetButtonFl()
 {
 	return buttonforwardl;

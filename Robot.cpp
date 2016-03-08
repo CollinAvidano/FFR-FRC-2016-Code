@@ -19,9 +19,6 @@ private:
 	BuiltInAccelerometer *accel;
 	Command *autonomousCommand;
 	LiveWindow *lw;
-	IMAQdxSession session;
-	Image *frame;
-	IMAQdxError imaqError;
 
 
 	void RobotInit()

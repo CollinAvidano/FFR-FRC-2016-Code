@@ -1,7 +1,7 @@
 #include "LiftUpDown.h"
 
-#include "Subsystems/LiftingArm.h"
-#include "OI.h"
+#include "../Subsystems/LiftingArm.h"
+#include "../OI.h"
 
 LiftUpDown::LiftUpDown()
 {

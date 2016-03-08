@@ -18,7 +18,7 @@ void LiftingArm::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new LiftUpDown);
+	SetDefaultCommand(new LiftUpDown());
 }
 /*Encoder *LiftingArm::GetEncoder()
 {

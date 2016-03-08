@@ -1,7 +1,6 @@
-#ifndef LiftingArm_H
-#define LiftingArm_H
+#pragma once
 
-#include "Commands/Subsystem.h"
+#include <Commands/Subsystem.h>
 #include "WPILib.h"
 
 class LiftingArm: public Subsystem
@@ -19,5 +18,3 @@ public:
 	void Down(float speed);
 	void Stop();
 };
-
-#endif

@@ -1,12 +1,17 @@
 #pragma once
 
-#include "Commands/Subsystem.h"
+#include <Commands/Subsystem.h>
+#include "WPILib.h"
 
-class ExampleSubsystem : public Subsystem {
+class ShootPlatform : public Subsystem {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+	SpeedController *shootforward;
+	SpeedController *shootback;
+	Servo *servoleft;
+	Servo *servoright;
+
 public:
-	ExampleSubsystem();
+	ShootPlatform();
 	void InitDefaultCommand();
+	void ShootOI(JoystickButton* button1, JoystickButton* button2, JoystickButton* button3, JoystickButton* button4);
 };

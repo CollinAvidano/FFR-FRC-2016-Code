@@ -1,14 +1,12 @@
 #include "DrivewithJoystick.h"
-
-#include "Subsystems/DriveTrain.h"
-#include "OI.h"
+#include "../Subsystems/DriveTrain.h"
+#include "../OI.h"
 
 DrivewithJoystick::DrivewithJoystick()
 {
-	Requires(drivetrain);
-
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(drivetrain);
 }
 
 // Called just before this Command runs the first time
