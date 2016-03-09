@@ -16,12 +16,14 @@
 // following variables to use with your drivetrain subsystem.
 //const int LeftFrontDrive = 0;
 //const int RightFrontDrive = 1;
-const int LeftDrive = 2;
-const int RightDrive = 3;
+const int LeftDrive = 0;
+const int RightDrive = 1;
 
-const int ArmJagPWM1 = 4;
-const int ArmJagPWM2 = 5;
-const int ArmJagPWM3 = 6;
+const int ShootForward = 2;
+const int ShootBack = 3;
+
+const int ServoLeft = 4;
+const int ServoRight = 5;
 
 const int EncAChan = 0;
 const int EncBChan = 1;

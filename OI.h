@@ -12,8 +12,10 @@ private:
 	JoystickButton *buttonright;
 	JoystickButton *buttonleftf;
 	JoystickButton *buttonrightf;
-	JoystickButton *buttonopen;
-	JoystickButton *buttonclose;
+	JoystickButton *button1;
+	JoystickButton *button2;
+	JoystickButton *button3;
+	JoystickButton *button4;
 	JoystickButton *buttonforwardl;
 	JoystickButton *buttonbackwardl;
 	JoystickButton *buttonforwardr;
@@ -29,8 +31,12 @@ public:
 	JoystickButton* GetButtonLeftf();
 	JoystickButton* GetButtonRightf();
 	Joystick* GetGameCon();
-	JoystickButton* GetButtonOpen();
-	JoystickButton* GetButtonClose();
+
+	JoystickButton* GetButton1();
+	JoystickButton* GetButton2();
+	JoystickButton* GetButton3();
+	JoystickButton* GetButton4();
+
 	JoystickButton* GetButtonFl();
 	JoystickButton* GetButtonFr();
 	JoystickButton* GetButtonBl();

@@ -1,6 +1,7 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "Subsystems/DriveTrain.h"
+#include "Subsystems/ShootPlatform.h"
 #include "CommandBase.h"
 #include <string.h>
 #include "RobotMap.h"
@@ -12,20 +13,16 @@ private:
 	//SendableChooser *autoChooser;
 	DriveTrain *drivetrain;
 	OI *oi;
+	ShootPlatform *shootplatform;
 
 	BuiltInAccelerometer *accel;
 	Command *autonomousCommand;
 	LiveWindow *lw;
-	IMAQdxSession session;
-	Image *frame;
-	IMAQdxError imaqError;
-
 
 	void RobotInit()
 	{
 		CommandBase::init();
 		SmartDashboard::init();
-		accel = new BuiltInAccelerometer;
 		//SmartDashboard::PutData(drivetrain);
 		//autoChooser = new SendableChooser();
 		//autoChooser->AddDefault("Default program", new  DriveForward());

@@ -1,9 +1,7 @@
-#ifndef Shoot_H
-#define Shoot_H
+#pragma once
 
 #include "../CommandBase.h"
 #include "WPILib.h"
-#include "../RobotMap.h"
 
 class Shoot: public CommandBase
 {
@@ -15,5 +13,3 @@ public:
 	void End();
 	void Interrupted();
 };
-
-#endif
